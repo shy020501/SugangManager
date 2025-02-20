@@ -23,5 +23,9 @@ python main.py --id <학번> --pw <비밀번호> --grade <학년> --to_integrate
 | `--to_integrate` | `bool`      | 티통 여부                                         | `True`                  |
 | `--classes`      | `list[str]` | 신청할 강의의 학수번호-분반 (띄어쓰기로 구분)        | `GELT031-I1 ESM3074-41` |
 
+### Example
+```bash
+python main.py --id 2022123456 --pw mypassword --grade 4 --to_integrate False --classes GELT031-I1 ESM3074-41
+```
 
 
