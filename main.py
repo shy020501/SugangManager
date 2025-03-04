@@ -127,7 +127,7 @@ class SugangManager:
                             if not to_integrate: # 티통 아닐 때는 학년 별 잔여 수업 확인
                                 available_seats = row.find_element(By.XPATH, f'.//td[@aria-describedby="listLecture_jagwa{grade}"]').text.strip()
                             else: # 티통일 때는 전체 잔여 수업 확인
-                                available_seats = row.find_element(By.XPATH, './/td[@aria-describedby="listLecture_tot"]').text.strip()
+                                available_seats = row.find_element(By.XPATH, './/td[@aria-describedby="listLecture_tot_dhw"]').text.strip()
                             
                             current, total = map(int, available_seats.split(" / "))
                             if current < total:
