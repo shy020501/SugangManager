@@ -9,7 +9,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 import random
 import time
 import argparse
-from distutils.util import strtobool 
 
 class SugangManager:
     def __init__(self):
@@ -156,7 +155,7 @@ if __name__ == "__main__":
     parser.add_argument('--id', type=str, required=True, help="학번 입력")
     parser.add_argument('--pw', type=str, required=True, help="비밀번호 입력")
     parser.add_argument('--grade', type=str, required=True, help="학년 입력")
-    parser.add_argument('--to_integrate', type=lambda x: bool(strtobool(x)), required=True, help="티통이면 True 아니면 False")
+    parser.add_argument('--to_integrate', type=lambda x: x.lower() in ['true', '1', 't', 'y', 'yes'], required=True, help="티통이면 True 아니면 False")
     parser.add_argument('--classes', nargs='+', required=True, help="들을 수업의 학수번호-분반 정확하게 입력")
     parser.add_argument('--min', type=float, required=False, default=3.0)
     parser.add_argument('--max', type=float, required=False, default=5.0)
