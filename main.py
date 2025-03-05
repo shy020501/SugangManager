@@ -87,7 +87,7 @@ class SugangManager:
                 self.input_login(user_id, user_pw)
                 login_button.click()
                 
-            except NoSuchElementException:
+            except NoSuchElementException: # 로그인 페이지가 아니고 수강신청 페이지인 것을 확인
                 iframe_element = self.driver.find_element(By.ID, "contentFrame")
                 self.driver.switch_to.frame(iframe_element)
                 self.driver.switch_to.frame("topFrame")
@@ -102,7 +102,8 @@ class SugangManager:
                     sugang_btn.click()
 
                 else:
-                    print("수강신청 버튼 클릭 안됨. 보이면 나한테 톡 좀.")
+                    print("상단 메뉴바 검색 불가.")
+                    assert False
                     
                 self.driver.switch_to.default_content()
                 self.driver.switch_to.frame("Main")
@@ -115,7 +116,7 @@ class SugangManager:
                     valid_rows = [row for row in rows if row.get_attribute("id") and row.get_attribute("id").isdigit() and int(row.get_attribute("id")) >= 1]
                     
                 except NoSuchElementException:
-                    print("책가방에 담은 과목들 안불러와짐. 제대로 담겨있는지 확인하고, 담겨 있으면 나한테 톡 좀.")
+                    print("책가방에 담긴 과목들 목록을 확인할 수 없음. 책가방에 담긴 과목이 있나 확인 필요.")
                     
                 try:
                     for row in valid_rows:
