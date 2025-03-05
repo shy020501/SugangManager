@@ -1,5 +1,5 @@
 # SugangManager
-수강신청 자동 모니터링 및 신청 프로그램. 주기적으로 원하는 강의 중 빈 강의가 있나 확인 후, 잔여 좌석이 있으면 자동으로 신청.
+🚀 수강신청 자동 모니터링 및 신청 프로그램. 주기적으로 원하는 강의 중 빈 강의가 있나 확인 후, 잔여 좌석이 있으면 자동으로 신청.
 
 ## Installation
 ```bash
@@ -9,6 +9,7 @@ pip install -r requirements.txt
 ```
 
 ## Run Manager
+⚠️ --id 및 --pw 값에 특수문자(!, @, $, & 등)가 포함된 경우, 반드시 따옴표(" 또는 ')로 감싸서 입력하세요.
 ```bash
 python main.py --id <학번> --pw <비밀번호> --grade <학년> --to_integrate <티통 여부> --classes <들을 수업들 학수번호>
 ```
@@ -25,7 +26,7 @@ python main.py --id <학번> --pw <비밀번호> --grade <학년> --to_integrate
 
 ### Example
 ```bash
-python main.py --id 2022123456 --pw mypassword --grade 4 --to_integrate False --classes GELT031-I1 ESM3074-41
+python main.py --id 2022123456 --pw "my!pass&word" --grade 4 --to_integrate False --classes GELT031-I1 ESM3074-41
 ```
 
 
