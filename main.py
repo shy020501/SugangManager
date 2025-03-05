@@ -121,7 +121,7 @@ class SugangManager:
                 try:
                     for row in valid_rows:
                         haksu_td = row.find_element(By.XPATH, './/td[@aria-describedby="listLecture_haksu_no"]')
-                        haksu_no = haksu_td.text.strip()
+                        haksu_no = haksu_td.text.strip().lower()
                         
                         if haksu_no in classes:
                             if not to_integrate: # 티통 아닐 때는 학년 별 잔여 수업 확인
@@ -137,10 +137,15 @@ class SugangManager:
                                 print(f"강의 {haksu_no} 잔여석 존재")
                                 apply_button = row.find_element(By.XPATH, './/td[@aria-describedby="listLecture_mode"]//span[contains(text(), "신청")]')
                                 apply_button.click()
+                                classes.remove(haksu_no)
                                 time.sleep(random.uniform(1.0, 2.0))
                                 
                 except Exception as e:
                     print(f"각 과목 탐색 중 오류 : {e}")
+                    
+                if not classes:
+                    print("수강 신청 완료")
+                    break
                     
     def __del__(self):
         """
@@ -172,7 +177,7 @@ if __name__ == "__main__":
         user_pw=args.pw, 
         grade=args.grade, 
         to_integrate=args.to_integrate, 
-        classes=args.classes, 
+        classes=[class_no.lower() for class_no in args.classes], 
         min_wait_time=args.min, 
         max_wait_time=args.max
     )
