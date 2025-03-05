@@ -129,8 +129,11 @@ class SugangManager:
                             else: # 티통일 때는 전체 잔여 수업 확인
                                 available_seats = row.find_element(By.XPATH, './/td[@aria-describedby="listLecture_tot_dhw"]').text.strip()
                             
-                            current, total = map(int, available_seats.split(" / "))
-                            if current < total:
+                            current, total = available_seats.split(" / ")
+                            
+                            available = True if total == "무제한" or (total.isdigit() and int(current) < int(total)) else False
+                            
+                            if available:
                                 print(f"강의 {haksu_no} 잔여석 존재")
                                 apply_button = row.find_element(By.XPATH, './/td[@aria-describedby="listLecture_mode"]//span[contains(text(), "신청")]')
                                 apply_button.click()
