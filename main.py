@@ -65,7 +65,7 @@ class SugangManager:
         time.sleep(random.uniform(1.0, 2.0))
         
         
-    def run_mananger(self, user_id, user_pw, grade, to_integrate, classes, min_wait_time, max_wait_time):
+    def run_manager(self, user_id, user_pw, grade, to_integrate, classes, min_wait_time, max_wait_time):
         """
         반복적으로 수강신청 페이지 확인 후, 빈자리가 있으면 자동으로 신청
         
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     manager = SugangManager()
-    manager.run_mananger(
+    manager.run_manager(
         user_id=args.id, 
         user_pw=args.pw, 
         grade=args.grade, 
